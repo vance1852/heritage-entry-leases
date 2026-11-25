@@ -1,0 +1,81 @@
+{
+  "facts": {
+    "windows": [
+      {
+        "id": "r1",
+        "direction": "down",
+        "start": 45000,
+        "until": 45900,
+        "capacity": 21
+      }
+    ],
+    "gates": [
+      {
+        "id": "west",
+        "error_bound": 4,
+        "max_offline": 600
+      },
+      {
+        "id": "bend",
+        "error_bound": 6,
+        "max_offline": 400
+      }
+    ]
+  },
+  "events": [
+    {
+      "at": 45002,
+      "kind": "allot",
+      "gate": "west",
+      "window": "r1",
+      "grant_id": "g-c",
+      "count": 13
+    },
+    {
+      "at": 45008,
+      "kind": "permit",
+      "permit": "p-b",
+      "group": "m4",
+      "gate": "west",
+      "grant_id": "g-c",
+      "count": 11
+    },
+    {
+      "at": 45009,
+      "kind": "disconnect",
+      "gate": "west",
+      "clock_error": 8
+    },
+    {
+      "at": 45015,
+      "kind": "scan",
+      "gate": "west",
+      "permit": "p-b",
+      "local_time": 45023
+    },
+    {
+      "at": 45016,
+      "kind": "move",
+      "group": "m4",
+      "gate": "bend",
+      "window": "r1"
+    },
+    {
+      "at": 45017,
+      "kind": "request_return",
+      "gate": "west",
+      "grant_id": "g-c",
+      "count": 13
+    },
+    {
+      "at": 45035,
+      "kind": "return",
+      "gate": "west",
+      "grant_id": "g-c",
+      "returned": 13,
+      "last_use_no": 0,
+      "reported_consumed": 0
+    }
+  ],
+  "exchanges": []
+}

@@ -1,0 +1,147 @@
+{
+  "facts": {
+    "windows": [
+      {
+        "id": "p1",
+        "direction": "up",
+        "start": 36000,
+        "until": 36900,
+        "capacity": 23
+      },
+      {
+        "id": "p2",
+        "direction": "up",
+        "start": 36900,
+        "until": 37800,
+        "capacity": 20
+      }
+    ],
+    "gates": [
+      {
+        "id": "upper",
+        "error_bound": 3,
+        "max_offline": 180
+      },
+      {
+        "id": "annex",
+        "error_bound": 5,
+        "max_offline": 240
+      }
+    ]
+  },
+  "events": [
+    {
+      "at": 35970,
+      "kind": "allot",
+      "gate": "annex",
+      "window": "p1",
+      "grant_id": "g-a",
+      "count": 12
+    },
+    {
+      "at": 35971,
+      "kind": "allot",
+      "gate": "upper",
+      "window": "p1",
+      "grant_id": "g-b",
+      "count": 9
+    },
+    {
+      "at": 35995,
+      "kind": "permit",
+      "permit": "p-kr",
+      "group": "kr",
+      "gate": "annex",
+      "grant_id": "g-a",
+      "count": 7
+    },
+    {
+      "at": 36010,
+      "kind": "disconnect",
+      "gate": "annex",
+      "clock_error": 1
+    },
+    {
+      "at": 36012,
+      "kind": "disconnect",
+      "gate": "upper",
+      "clock_error": -2
+    },
+    {
+      "at": 36019,
+      "kind": "scan",
+      "gate": "annex",
+      "permit": "p-kr",
+      "local_time": 36020
+    },
+    {
+      "at": 36020,
+      "kind": "scan",
+      "gate": "upper",
+      "permit": "p-kr",
+      "local_time": 36018
+    },
+    {
+      "at": 36022,
+      "kind": "restart",
+      "gate": "annex"
+    },
+    {
+      "at": 36030,
+      "kind": "scan",
+      "gate": "annex",
+      "permit": "p-kr",
+      "local_time": 36031
+    },
+    {
+      "at": 36031,
+      "kind": "move",
+      "group": "kr",
+      "gate": "upper",
+      "window": "p2"
+    },
+    {
+      "at": 36040,
+      "kind": "request_return",
+      "gate": "annex",
+      "grant_id": "g-a",
+      "count": 5
+    },
+    {
+      "at": 36055,
+      "kind": "closure",
+      "direction": "up"
+    },
+    {
+      "at": 36080,
+      "kind": "closure_seen",
+      "gate": "annex"
+    },
+    {
+      "at": 36082,
+      "kind": "closed",
+      "gate": "annex",
+      "direction": "up"
+    },
+    {
+      "at": 36084,
+      "kind": "return",
+      "gate": "annex",
+      "grant_id": "g-a",
+      "returned": 5,
+      "last_use_no": 1,
+      "reported_consumed": 7
+    },
+    {
+      "at": 36095,
+      "kind": "use_record",
+      "gate": "annex",
+      "grant_id": "g-a",
+      "use_no": 1,
+      "permit": "p-kr",
+      "count": 7,
+      "local_time": 36020
+    }
+  ],
+  "exchanges": []
+}
